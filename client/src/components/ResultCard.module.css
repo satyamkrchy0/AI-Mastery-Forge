@@ -1,0 +1,410 @@
+.card {
+  position: relative;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--shape-xl);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-shadow-lg);
+  overflow: hidden;
+  animation: scaleIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Top-edge liquid glass refraction */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 3%;
+  right: 3%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+  z-index: 2;
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95) translateY(16px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* ── Verdict Banner ──────────────────────────── */
+.verdictBanner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 32px 36px;
+  gap: 24px;
+  flex-wrap: wrap;
+  position: relative;
+  overflow: hidden;
+  animation: fadeIn 0.5s var(--ease-emphasized);
+}
+
+.verdictBanner::after {
+  content: '';
+  position: absolute;
+  top: -60%;
+  left: 10%;
+  width: 80%;
+  height: 100%;
+  background: radial-gradient(ellipse, currentColor, transparent 70%);
+  opacity: 0.035;
+  pointer-events: none;
+}
+
+.verdictLeft {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  flex: 1;
+  min-width: 0;
+}
+
+.verdictIconWrap {
+  width: 68px;
+  height: 68px;
+  border-radius: var(--shape-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  backdrop-filter: blur(8px);
+  position: relative;
+  overflow: hidden;
+}
+
+.verdictIconWrap::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.08), transparent);
+  border-radius: inherit;
+}
+
+.verdictLabel {
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  margin-bottom: 5px;
+}
+
+.verdictHeadline {
+  font-size: 0.93rem;
+  color: var(--text-medium);
+  line-height: 1.45;
+  max-width: 420px;
+}
+
+/* ── OCR Section ─────────────────────────────── */
+.ocrSection {
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.ocrToggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 36px;
+  background: rgba(255, 171, 64, 0.04);
+  border: none;
+  color: var(--md-tertiary);
+  font-family: inherit;
+  font-size: 0.83rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.ocrToggle:hover { background: rgba(255, 171, 64, 0.08); }
+
+.ocrChevron {
+  font-size: 0.68rem;
+  transition: transform var(--duration-medium) var(--ease-expressive);
+}
+
+.ocrContent {
+  padding: 0 36px 22px;
+  animation: fadeIn 0.3s;
+}
+
+.ocrText {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: var(--shape-md);
+  padding: 18px 20px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  color: var(--text-medium);
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-height: 200px;
+  overflow-y: auto;
+  line-height: 1.7;
+}
+
+/* ── Markdown Container ──────────────────────── */
+.markdownContainer {
+  padding: 30px 36px;
+  color: var(--text-medium);
+  font-size: 0.95rem;
+  line-height: 1.75;
+}
+
+.mdH1 {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--text-high);
+  margin-top: 32px;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.mdH1:first-child { margin-top: 0; }
+
+.mdH2 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-high);
+  margin-top: 28px;
+  margin-bottom: 14px;
+}
+
+.mdH3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-high);
+  margin-top: 24px;
+  margin-bottom: 12px;
+}
+
+.mdP {
+  margin-bottom: 18px;
+}
+
+.mdUl {
+  margin-bottom: 20px;
+  padding-left: 20px;
+}
+
+.mdLi {
+  margin-bottom: 8px;
+}
+
+/* ── Footer ──────────────────────────────────── */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 36px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.metaInfo {
+  font-size: 0.75rem;
+  color: var(--text-low);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.footerButtons {
+  display: flex;
+  gap: 12px;
+}
+
+/* ── Follow Up Question ── */
+.followUpSection {
+  padding: 0 36px 26px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  margin-top: 10px;
+}
+
+.followUpForm {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.inputContainer {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.followUpInput {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--shape-full);
+  color: var(--text-high);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  padding: 14px 22px;
+  outline: none;
+  transition: border-color var(--duration-short), box-shadow var(--duration-short);
+}
+
+.followUpInput:focus {
+  border-color: var(--md-tertiary);
+  box-shadow: 0 0 0 3px rgba(255, 171, 64, 0.12);
+}
+
+.followUpBtn {
+  padding: 14px 30px;
+  background: linear-gradient(135deg, var(--md-tertiary) 0%, var(--md-tertiary-dim) 100%);
+  border: none;
+  border-radius: var(--shape-full);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform var(--duration-short);
+}
+
+.followUpBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(255, 171, 64, 0.3);
+}
+
+.micButton {
+  position: absolute;
+  right: 12px;
+  background: transparent;
+  border: none;
+  color: var(--text-medium);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--duration-short) var(--ease-expressive);
+}
+
+.micButton:hover {
+  background: rgba(155, 126, 248, 0.15);
+  color: #fff;
+}
+
+.micButton.listening {
+  background: rgba(255, 94, 125, 0.2);
+  color: #ff5e7d;
+  animation: pulseMic 1.5s infinite;
+}
+
+@keyframes pulseMic {
+  0% { box-shadow: 0 0 0 0 rgba(255, 94, 125, 0.4); }
+  70% { box-shadow: 0 0 0 8px rgba(255, 94, 125, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 94, 125, 0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@media (max-width: 640px) {
+  .verdictBanner { padding: 22px; }
+  .chatContainer { padding: 22px; }
+  .footer { padding: 18px 22px; }
+}
+
+/* ── Chat UI ── */
+.chatContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 30px 36px;
+  max-height: 500px;
+  overflow-y: auto;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.chatMessage {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  animation: fadeIn 0.3s ease;
+}
+
+.userMessage {
+  flex-direction: row-reverse;
+}
+
+.chatAvatar {
+  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+}
+
+.chatBubble {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 16px 20px;
+  border-radius: var(--shape-lg);
+  color: var(--text-medium);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  max-width: 85%;
+}
+
+.userMessage .chatBubble {
+  background: rgba(155, 126, 248, 0.15);
+  border-color: rgba(155, 126, 248, 0.3);
+  color: var(--text-high);
+  border-top-right-radius: 4px;
+}
+
+.modelMessage .chatBubble {
+  border-top-left-radius: 4px;
+}
+
+.typingIndicator {
+  font-style: italic;
+  color: var(--text-low);
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+
+.modelContentWrapper {
+  position: relative;
+}
+
+.ttsButton {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: transparent;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity var(--duration-short) ease, transform var(--duration-short) ease;
+}
+
+.ttsButton:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.ttsButton:active {
+  transform: scale(0.9);
+}
+
